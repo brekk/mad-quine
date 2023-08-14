@@ -1,0 +1,32 @@
+import IO from "IO"
+import String from "String"
+
+
+
+imports = [`import IO from "IO"`, `import String from "String"`]
+body = [
+  `main = () => {`,
+  `  IO.putLine(String.join("\\\\\n", imports))`,
+  `  IO.putLine("\\\\\n")`,
+  `  IO.putLine(enstringen("imports", imports))`,
+  `  IO.putLine(enstringen("body", body))`,
+  `  IO.putLine(`,
+  `     \`enstringen = (k, xs) => k ++ " = [" ++ String.join(", ", map((z) => '"' ++ z ++ '"', xs)) ++ "]\``,
+  `  )`,
+  `  IO.putLine(String.join("\\\\\n", body))`,
+  `  IO.putLine("\\\\\n")`,
+  `}`,
+]
+
+enstringen = (k, xs) => `${k} = [${String.join(", ", map((z) => "`" ++ z ++ "`", xs))}]`
+
+main = () => {
+  IO.putLine(String.join("\n  ", imports))
+  IO.putLine("\n")
+  IO.putLine(enstringen("imports", imports))
+  IO.putLine(enstringen("body", body))
+  IO.putLine(
+    `enstringen = (k, xs) => k ++ " = [" ++ String.join(", ", map((z) => '"' ++ z ++ '"', xs)) ++ "]`,
+  )
+  IO.putLine(String.join("\n  ", body))
+}
